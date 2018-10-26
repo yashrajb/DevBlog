@@ -3,7 +3,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
 const cookieSession = require("cookie-session");
 const {User} = require("../models/users");
-const {clientID,clientSecret,callbackURL} = require("./keys.env.js");
+const {clientID,clientSecret,callbackURL} = require("./keys");
 passport.serializeUser((user,done) => {
 	done(null,user.id);
 });
