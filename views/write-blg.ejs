@@ -1,0 +1,46 @@
+<%- include('./required_files/header',{user:user}); %>
+<style>
+form {
+	margin-bottom:13px;
+}
+input[type="submit"] {
+	margin-top:7px;
+}
+#title {
+	margin-bottom:13px;
+	border-radius:0px;
+}
+</style>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=tao8gs7sqhqicwfe4t8fmgcrjpj5th27qrps6pq9plan4wu0"></script>
+  <script>
+   var ed = tinymce.init({
+    selector: '#mytextarea',
+    paste_as_text: true,
+   plugins: "paste",
+    toolbar:[
+    'undo redo | styleselect | bold italic | link image',
+    'alignleft aligncenter alignright'
+  ],
+  height:600,
+  remove_linebreaks : false,
+  force_br_newlines : true,
+  force_p_newlines : false,
+  forced_root_block : ""
+  });
+</script>
+<div class="container">
+  <p><%- messages() %></p>
+<form action="post/add"  method="post">
+	<div class="form-field">
+		<input type="text" id="title" class="form-control" placeholder="Enter title...." name="title"/>
+	</div>
+	<div class="form-field">
+		<textarea id="mytextarea" name="content"></textarea>
+	</div>
+	<div class="form-field">
+<input type="submit" class="btn btn-default" value="submit"/>
+	</div>
+</form>
+</div>
+
+<%- include('./required_files/footer'); %>

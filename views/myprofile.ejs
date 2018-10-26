@@ -1,0 +1,42 @@
+<%- include('./required_files/header',{user:user}); %>
+<p><%- messages(); %></p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-xl-4 col-lg-4">
+			<img src="/uploaded-images/<%= user.profile_pic %>" class="img-responsive thumbnail" style="width:200px;" />
+			<button class="btn btn-default" data-toggle="modal" data-target="#myModal">Change Profile Picture</button>
+		</div>
+		<div class="col-md-6 col-xl-6 col-lg-6">
+			<form action="/my-profile/add/bio" method="post">
+				<textarea class="form-control" name="bio" rows="15" placeholder="Bio"><%= (user.Bio)?user.Bio:"" %></textarea>
+			
+				<input style="margin-top:9px;" class="btn btn-default" type="submit" value="submit"/>
+			</form>
+				<p style="margin-top:9px;"><a href="" class="btn btn-danger btn-block" style="border-radius:0px;">Delete Account</a></p>
+		</div>
+	</div>
+	<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog"  style="margin-top:100px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4>upload profile image</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/my-profile/upload/picture" method="post" enctype="multipart/form-data">
+        	<div class="form-field text-center">
+        		<input type="file" class="btn btn-default" name="pic"/>
+        	</div>
+        	<div class="form-field" style="margin-top:8px;">
+        		<input type="submit" value="submit" class="btn btn-default"/>
+        	</div>
+        </form> 
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<%- include('./required_files/footer'); %>

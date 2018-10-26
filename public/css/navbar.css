@@ -1,0 +1,28 @@
+.navbar-default {
+	background-color:white;
+	box-shadow:3px 3px 3px lightgrey;
+	border-radius:0px;
+	padding:10px;
+}
+
+.loginGoogle {
+	background-color:red;
+	color:white !important;
+	padding:5px 20px 5px 20px !important;
+	margin:11px;
+	border:1px solid red;
+	box-shadow:3px 3px 3px lightgrey;
+
+}
+
+.logo {
+	border:1px solid black;
+	box-shadow:3px 3px 3px lightgrey;
+	padding:9px;
+}
+
+.loginGoogle:hover {
+	background-color:red !important;
+	box-shadow:1px 1px 1px lightgrey;
+}
+

@@ -1,0 +1,40 @@
+<%- include('./required_files/header',{user:user}); %>
+<style>
+	
+	.author-image {
+		width:180px;
+	}
+
+</style>
+	<% if(profile.length > 0){ %>
+
+		<div class="container text-center">
+			<div class="thumbnail text-center" style="border:0px;">
+				<img class="img-responsive author-image" src="/uploaded-images/<%= profile[0].profile_pic %>" />
+			</div>
+			<p><b>username:</b> <%= profile[0].username %></p>
+			<p><% if(profile[0].Bio){ %>
+				<b>About:</b> <%= profile[0].Bio %>	
+			<% } %>
+			</p>
+			<% if(profile[0].posts.length > 0) { %>
+				<h3> Posts </h3>
+						<% profile[0].posts.forEach(function(obj){ %>
+				<div class="panel panel-default text-left">
+  					<div class="panel-heading">
+  						<a href="/post/<%= obj.slug %>"><%= obj.title %></a>
+  					</div>
+	  				<div class="panel-body">
+<p><%= obj.content+"...." %></p>
+	  				</div>
+	  				
+	  				</div>
+			<% });} %>
+		</div>
+
+	<% } else { %>
+
+	<h3 class="text-center text-danger">User is not found</h3>
+
+	<% } %>
+<%- include('./required_files/footer'); %>
