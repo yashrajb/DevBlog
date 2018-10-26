@@ -4,9 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "author": "",
+  "engines": {
+    "node": "8.9.4"
+  },
+  "author": "yashraj basan",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
