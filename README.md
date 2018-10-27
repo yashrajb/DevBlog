@@ -1,5 +1,5 @@
 # DevBlog
-Simple multi user blogging system using node js and mongodb
+Simple multiuser blogging system using node js and mongodb
 
 To Run this application some API keys needed and mongodb database
 1.google Oauth API
