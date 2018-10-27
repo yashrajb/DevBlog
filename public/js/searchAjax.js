@@ -11,7 +11,6 @@ search.addEventListener("keyup",function(e){
 	xmlhttp.onreadystatechange = function(){
 		if (this.readyState == 4 && this.status == 200) {
            	  var responseObject = JSON.parse(this.response);
-           	  console.log(responseObject)
 				    	var template = document.getElementById("searchResult-template").innerHTML;
 				    	var html;
 				    	responseObject.map(function(obj){
@@ -29,7 +28,7 @@ search.addEventListener("keyup",function(e){
 				    			    	
        }
 	}
-	xmlhttp.open("GET",`/api/search/${document.getElementById("search").value}`,false);
+	xmlhttp.open("GET",`/api/search/${document.getElementById("search").value}`,true);
 	xmlhttp.send();
 
 	}else {
