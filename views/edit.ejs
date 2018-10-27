@@ -14,7 +14,7 @@ input[type="submit"] {
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=tao8gs7sqhqicwfe4t8fmgcrjpj5th27qrps6pq9plan4wu0"></script>
   
 <div class="container">
-<form action="post/add"  method="post">
+<form action="/post/edit/<%= story.slug %>"  method="post">
 	<div class="form-field">
 		<input type="text" id="title" value="<%= story.title %>" class="form-control" placeholder="Enter title...." name="title"/>
 	</div>
