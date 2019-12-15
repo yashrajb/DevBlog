@@ -1,29 +1,36 @@
 <%- include('./required_files/header',{user:user}); %>
 <p><%- messages() %></p>
-	<div class="container">
-		<% if(posts.length > 0){ %>
-			<% posts.forEach(function(obj){ %>
-				<div class="panel panel-default">
-  					<div class="panel-heading">
-  						<a href="/post/<%= obj.slug %>"><%= obj.title %></a>
-  					</div>
-	  				<div class="panel-body">
-<p><%- obj.content+"...." _%></p>
-	  				</div>
-	  				<div class="panel-footer">
-	  					<a href="/post/delete/<%= obj.slug %>">
-	  						<span class="fa fa-trash" style="font-size:19px;margin-right:5px;"></span>
-	  					</a>
-	  					<a href="/post/edit/<%= obj.slug %>">
-<span class="fa fa-pencil" style="font-size:19px;margin-left:6px;color:grey"></span>
-	  					</a>
-	  				</div>
-				</div>
-			<% }); %>
-		<% } else { %>
-			<p style="margin-top:200px;" class="text-center"><a href="/write"><span style="font-size:24px;" class="fa fa-plus"></span></a>
-			</p>
-		<% } %>
-	</div>
-	<script src="/js/ejs.min.js"></script>
+<div class="container">
+  <% if(posts.length > 0){ %> <% posts.forEach(function(obj){ %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="/post/<%= obj.slug %>"><%= obj.title %></a>
+    </div>
+    <div class="panel-body">
+      <p><%- obj.content+"...." _%></p>
+    </div>
+    <div class="panel-footer">
+      <a href="/post/delete/<%= obj.slug %>">
+        <span
+          class="fa fa-trash"
+          style="font-size:19px;margin-right:5px;"
+        ></span>
+      </a>
+      <a href="/post/edit/<%= obj.slug %>">
+        <span
+          class="fa fa-pencil"
+          style="font-size:19px;margin-left:6px;color:grey"
+        ></span>
+      </a>
+    </div>
+  </div>
+  <% }); %> <% } else { %>
+  <p style="margin-top:200px;" class="text-center">
+    <a href="/post/write"
+      ><span style="font-size:24px;" class="fa fa-plus"></span
+    ></a>
+  </p>
+  <% } %>
+</div>
+<script src="/js/ejs.min.js"></script>
 <%- include('./required_files/footer'); %>

@@ -1,79 +1,82 @@
 <%- include('./required_files/header',{user:user}); %>
 <style type="text/css">
-	.post {
-		border:1px solid lightgrey;
-		box-shadow: 3px 3px 3px lightgrey;
-		padding:20px;
-		border-radius:6px;
-		margin-bottom:15px;
-	}
-	.heading {
-		font-size:20px;
-		padding-bottom:6px;
-	}
-	.read {
-		color:blue;
-	}
-	.search-result {
-		top:100px;
-		position:absolute;
-		border:1px solid black;
-	}
-	body {
-		margin-bottom:10px;
-	}
+  .post {
+    border: 1px solid lightgrey;
+    box-shadow: 3px 3px 3px lightgrey;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+  }
+  .heading {
+    font-size: 20px;
+    padding-bottom: 6px;
+  }
+  .read {
+    color: blue;
+  }
+  .search-result {
+    top: 100px;
+    position: absolute;
+    border: 1px solid black;
+  }
+  body {
+    margin-bottom: 10px;
+  }
 </style>
 <div class="container">
-<div class="row">
-	<div class="col-lg-8 col-xl-8 col-md-8">
+  <div class="row">
+    <div class="col-lg-8 col-xl-8 col-md-8">
+      <% posts.forEach(function(obj){ %>
+      <div class="post">
+        <div class="heading">
+          <%= obj.title %>
+        </div>
+        <div class="body">
+          <p><%= obj.content+"...." _%></p>
+        </div>
+        <a class="read" href="/post/<%= obj.slug %>">Read more</a>
+      </div>
+      <% }); %>
+    </div>
+    <div class="col-lg-4 col-xl-4 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 style="padding:0px;">Search Posts Here</h4>
+        </div>
+        <div class="panel-body">
+          <input
+            type="text"
+            class="form-control"
+            id="search"
+            placeholder="Enter title...."
+          />
+        </div>
 
-			<% posts.forEach(function(obj){ %>
-					<div class="post">
-  					<div class="heading">
-  						<%= obj.title %>
-  					</div>
-	  				<div class="body">
-				<p><%= obj.content+"...." _%></p>
-	  				</div>
-	  			<a class="read" href="/post/<%= obj.slug %>">Read more</a>
-				</div>
-				<% }); %>
-	</div>
-	<div class="col-lg-4 col-xl-4 col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-  				<h4 style="padding:0px;">Search Posts Here</h4>
-  			</div>
-  			<div class="panel-body">
-  				<input type="text" class="form-control" id="search" placeholder="Enter title...."></div>
-  				<div id="search-result"></div>
-  			</div>
-  			
-		</div>
-	</div>
-	<div class="footer">
-		<% if(total!==5){ %>
-				<ul class="pagination">
+        <div id="search-result"></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <% if(total!==5){ %>
+    <ul class="pagination">
+      <li><a href="/">1</a></li>
+      <% for(var i=1;i<total/5;i++){ %>
 
-				<li><a href="/">1</a></li>
-				<% for(var i=1;i<total/5;i++){ %>
-				
-						<li><a href="?page=<%= i+1 %>"><%= i+1 %></a></li>				
-				
-				<% } %>
-		</ul>
-		<% } %>
-	</div>
+      <li><a href="?page=<%= i+1 %>"><%= i+1 %></a></li>
+
+      <% } %>
+    </ul>
+    <% } %>
+  </div>
 </div>
 
 <script id="searchResult-template" type="text/template">
-	<div class="panel panel-default" style="padding:10px;">
-  		<h4>{{title}}</h4>
-  		<a href="/post/{{ link }}">Read more</a>
-	</div>
+  <div class="panel panel-default" style="padding:10px;">
+   		<h4>{{title}}</h4>
+   		<a href="/post/{{ link }}">Read more</a>
+  </div>
 </script>
 <script src="/js/Mustache.js"></script>
 <script src="/js/searchAjax.js"></script>
 
 <%- include('./required_files/footer'); %>
-
